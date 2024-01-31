@@ -7,6 +7,7 @@ import BooksTable from '../components/home/BooksTable';
 import BooksCard from '../components/home/BooksCard';
 import BookModal from '../components/home/BookModal';
 import CreateBook from './CreateBook';
+import axiosInstance from '../../axios.js';
 
 const Home = () => {
   const [books, setBooks] = useState([]);
@@ -25,8 +26,8 @@ const Home = () => {
 
   const loadBooks = (page) => {
     setLoading(true);
-    axios
-      .get('http://localhost:5555/books?page=' + page)
+    axiosInstance
+      .get('/books?page=' + page)
       .then((response) => {
         setBooks(response.data.data);
         setCurrentPage(response.data.currentPage);
