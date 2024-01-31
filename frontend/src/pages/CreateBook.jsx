@@ -43,8 +43,8 @@ const CreateBook = ({ onClose, loadBooks }) => {
   return (
     <div className='container'>
       {loading ? <Spinner isFull={true} /> : ''}
-      <div className='modal' onClick={onClose}>
-        <div onClick={(event) => event.stopPropagation()} className='modal-content'>
+      <div className='modal'>
+        <div className='modal-content'>
           <div className='modal__header'>
             <div className='header__title'>Add Book</div>
             <AiOutlineClose className='button--close' onClick={onClose} />
