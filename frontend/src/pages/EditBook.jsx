@@ -4,6 +4,7 @@ import Spinner from '../components/Spinner';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import { AiOutlineClose } from 'react-icons/ai';
+import axiosInstance from '../../axios.js';
 
 const EditBook = ({ onClose, loadBook }) => {
   const [title, setTitle] = useState('');
@@ -17,7 +18,7 @@ const EditBook = ({ onClose, loadBook }) => {
 
   useEffect(() => {
     setLoading(true);
-    axios.get(`http://localhost:5555/books/${id}`)
+    axiosInstance.get(`/books/${id}`)
     .then((response) => {
         setAuthor(response.data.author);
         setPublishYear(response.data.publishYear)
@@ -42,8 +43,8 @@ const EditBook = ({ onClose, loadBook }) => {
     };
     setLoading(true);
     const config = { headers: { "Content-Type": "multipart/form-data" } };
-    axios
-      .post(`http://localhost:5555/books/${id}`, data, config)
+    axiosInstance
+      .post(`/books/${id}`, data, config)
       .then(() => {
         setLoading(false);
         // enqueueSnackbar('Book Created successfully', { variant: 'success' });

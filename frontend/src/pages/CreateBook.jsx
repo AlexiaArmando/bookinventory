@@ -3,6 +3,7 @@ import BackButton from '../components/BackButton';
 import Spinner from '../components/Spinner';
 import axios from 'axios';
 import { AiOutlineClose } from 'react-icons/ai';
+import axiosInstance from '../../axios.js';
 
 // import { useSnackbar } from 'notistack';
 
@@ -26,8 +27,8 @@ const CreateBook = ({ onClose, loadBooks }) => {
     };
     setLoading(true);
     const config = { headers: { "Content-Type": "multipart/form-data" } };
-    axios
-      .post('http://localhost:5555/books', data, config)
+    axiosInstance
+      .post('/books', data, config)
       .then(() => {
         setLoading(false);
         loadBooks();

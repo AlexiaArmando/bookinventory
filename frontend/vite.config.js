@@ -8,7 +8,7 @@ export default defineConfig({
     host: true,
     port: 80,
     proxy: {
-      '/uploads': 'http://localhost:5555'
+      '/uploads': 'http://3.107.0.200:5555'
     }
   }
 })

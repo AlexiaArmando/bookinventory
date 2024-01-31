@@ -9,6 +9,7 @@ import { MdOutlineDelete } from 'react-icons/md';
 import EditBook from './EditBook';
 import DeleteBook from './DeleteBook';
 import DefaultImage from '../images/default.png';
+import axiosInstance from '../../axios.js';
 
 const ShowBook = () => {
   const [book, setBook] = useState({});
@@ -23,8 +24,8 @@ const ShowBook = () => {
 
   const loadBook = () => {
     setLoading(true);
-    axios
-      .get(`http://localhost:5555/books/${id}`)
+    axiosInstance
+      .get(`/books/${id}`)
       .then((response) => {
         setBook(response.data);
         setLoading(false);

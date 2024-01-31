@@ -4,6 +4,7 @@ import Spinner from '../components/Spinner';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import { AiOutlineClose } from 'react-icons/ai';
+import axiosInstance from '../../axios.js';
 
 const DeleteBook = ({ onClose, loadBook }) => {
   const [loading, setLoading] = useState(false);
@@ -13,8 +14,8 @@ const DeleteBook = ({ onClose, loadBook }) => {
 
   const handleDeleteBook = () => {
     setLoading(true);
-    axios
-      .delete(`http://localhost:5555/books/${id}`)
+    axiosInstance
+      .delete(`/books/${id}`)
       .then(() => {
         setLoading(false);
         // enqueueSnackbar('Book Deleted successfully', { variant: 'success' });
